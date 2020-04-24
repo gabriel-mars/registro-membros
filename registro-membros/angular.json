@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "registro-membros"
+  "defaultProject": "registro-membros",
+  "cli": {
+    "analytics": false
+  }
 }

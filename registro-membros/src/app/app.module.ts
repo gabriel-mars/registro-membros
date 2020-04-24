@@ -14,6 +14,8 @@ import { MatCardModule } from  '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './views/home/home.component';
 import { MembrosCrudComponent } from './views/membros-crud/membros-crud.component';
+import { MembroCreateComponent } from './components/membro/membro-create/membro-create.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MembrosCrudComponent } from './views/membros-crud/membros-crud.componen
     FooterComponent,
     NavComponent,
     HomeComponent,
-    MembrosCrudComponent
+    MembrosCrudComponent,
+    MembroCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { MembrosCrudComponent } from './views/membros-crud/membros-crud.componen
     MatToolbarModule,
     MatSidenavModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

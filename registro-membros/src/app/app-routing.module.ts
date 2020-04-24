@@ -1,8 +1,8 @@
+import { MembroCreateComponent } from './components/membro/membro-create/membro-create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { MembrosCrudComponent } from './views/membros-crud/membros-crud.component';
-
 
 const routes: Routes = [
   {
@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: "membros",
     component: MembrosCrudComponent
+  },
+  {
+    path: "membros/create",
+    component: MembroCreateComponent
   }
 ];
 
