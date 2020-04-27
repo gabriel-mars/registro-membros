@@ -1,4 +1,6 @@
+import { MembroService } from './../membro.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-membro-create',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembroCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private membroService: MembroService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  createMembro(): void {
+    this.membroService.showMessage('Operação realizada!');
+  }
+
+  cancel(): void {
+    this.router.navigate(['/membros']);
+  }
 }
