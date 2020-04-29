@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class MembroCreateComponent implements OnInit {
 
   membro: Membro = {
-    nome: "Gabriel Rodrigo Martins da Silva",
-    congregacao: "Eletrônica"
+    nome: '',
+    congregacao: ''
   }
 
   constructor(private membroService: MembroService, private router: Router) { }

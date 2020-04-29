@@ -24,4 +24,18 @@ export class MembroService {
   create(membro: Membro): Observable<Membro> {
     return this.http.post<Membro>(this.baseUrl, membro)
   }
+
+  read(): Observable<Membro[]> {
+    return this.http.get<Membro[]>(this.baseUrl);
+  }
+
+  readById(id: string): Observable<Membro> {
+    const url = `${this.baseUrl}/${id}`
+    return this.http.get<Membro>(url)
+  }
+
+  update(membro: Membro): Observable<Membro> {
+    const url = `${this.baseUrl}/${membro.id}`
+    return this.http.put<Membro>(url, membro)
+  }
 }

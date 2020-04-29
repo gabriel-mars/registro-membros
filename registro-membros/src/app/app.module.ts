@@ -18,8 +18,14 @@ import { MembrosCrudComponent } from './views/membros-crud/membros-crud.componen
 import { MembroCreateComponent } from './components/membro/membro-create/membro-create.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 import { HttpClientModule } from '@angular/common/http';
+
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MembroReadComponent } from './components/membro/membro-read/membro-read.component';
+import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     HomeComponent,
     MembrosCrudComponent,
-    MembroCreateComponent
+    MembroCreateComponent,
+    MembroReadComponent,
+    MembroUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatButtonModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

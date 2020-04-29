@@ -1,3 +1,4 @@
+import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
 import { MembroCreateComponent } from './components/membro/membro-create/membro-create.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "membros/create",
     component: MembroCreateComponent
+  },
+  {
+    path: "membros/update/:id",
+    component: MembroUpdateComponent
   }
 ];
 
