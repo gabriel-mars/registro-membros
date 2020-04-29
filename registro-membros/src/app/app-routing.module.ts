@@ -1,3 +1,4 @@
+import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
 import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
 import { MembroCreateComponent } from './components/membro/membro-create/membro-create.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: "membros/update/:id",
     component: MembroUpdateComponent
+  },
+  {
+    path: "membros/delete/:id",
+    component: MembroDeleteComponent
   }
 ];
 

@@ -10,7 +10,7 @@ import { Membro } from '../membro.model';
 })
 export class MembroUpdateComponent implements OnInit {
 
-  membro: Membro
+  membro: Membro;
 
   constructor(
     private membroService: MembroService,

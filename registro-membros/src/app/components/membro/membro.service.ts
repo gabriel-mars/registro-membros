@@ -38,4 +38,9 @@ export class MembroService {
     const url = `${this.baseUrl}/${membro.id}`
     return this.http.put<Membro>(url, membro)
   }
+
+  delete(id: number): Observable<Membro>{
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Membro>(url);
+  }
 }

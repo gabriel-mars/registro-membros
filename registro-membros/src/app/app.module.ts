@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MembroReadComponent } from './components/membro/membro-read/membro-read.component';
 import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
+import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MembroUpdateComponent } from './components/membro/membro-update/membro-
     MembrosCrudComponent,
     MembroCreateComponent,
     MembroReadComponent,
-    MembroUpdateComponent
+    MembroUpdateComponent,
+    MembroDeleteComponent
   ],
   imports: [
     BrowserModule,
