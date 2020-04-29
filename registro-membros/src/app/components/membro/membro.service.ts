@@ -2,27 +2,33 @@ import { Membro } from './membro.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MembroService {
 
   baseUrl = "http://localhost:3001/membros";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
-  showMessage(msg: string): void {
+  showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 300,
       horizontalPosition: "right",
-      verticalPosition: "top"
+      verticalPosition: "top",
+      panelClass: isError ? ["msg-success"] : ["msg-success"]
     });
   }
 
   create(membro: Membro): Observable<Membro> {
-    return this.http.post<Membro>(this.baseUrl, membro)
+    return this.http.post<Membro>(this.baseUrl, membro).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   read(): Observable<Membro[]> {
@@ -31,16 +37,30 @@ export class MembroService {
 
   readById(id: string): Observable<Membro> {
     const url = `${this.baseUrl}/${id}`
-    return this.http.get<Membro>(url)
+    return this.http.get<Membro>(url).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   update(membro: Membro): Observable<Membro> {
     const url = `${this.baseUrl}/${membro.id}`
-    return this.http.put<Membro>(url, membro)
+    return this.http.put<Membro>(url, membro).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   delete(id: number): Observable<Membro>{
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Membro>(url);
+    return this.http.delete<Membro>(url).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    );
+  }
+
+  errorHandler(e: any): Observable<any> {
+    this.showMessage('Ocorreu um erro!', true);
+    return EMPTY;
   }
 }
