@@ -1,3 +1,4 @@
+import { CongregacaoCrudComponent } from './views/congregacao-crud/congregacao-crud.component';
 import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
 import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
 import { MembroCreateComponent } from './components/membro/membro-create/membro-create.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "membros/delete/:id",
     component: MembroDeleteComponent
+  },
+  {
+    path: "congregacoes",
+    component: CongregacaoCrudComponent
   }
 ];
 

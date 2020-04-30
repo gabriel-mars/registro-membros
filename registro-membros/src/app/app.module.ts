@@ -27,6 +27,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MembroReadComponent } from './components/membro/membro-read/membro-read.component';
 import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
 import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
+import { CongregacaoCrudComponent } from './views/congregacao-crud/congregacao-crud.component';
+import { CongregacaoCreateComponent } from './components/congregacao/congregacao-create/congregacao-create.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { MembroDeleteComponent } from './components/membro/membro-delete/membro-
     MembroCreateComponent,
     MembroReadComponent,
     MembroUpdateComponent,
-    MembroDeleteComponent
+    MembroDeleteComponent,
+    CongregacaoCrudComponent,
+    CongregacaoCreateComponent
   ],
   imports: [
     BrowserModule,
