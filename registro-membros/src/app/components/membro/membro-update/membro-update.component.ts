@@ -19,20 +19,20 @@ export class MembroUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.membroService.readById(id).subscribe(membro => {
+    const id = +this.route.snapshot.paramMap.get("id")
+    this.membroService.readById(id).subscribe((membro) => {
       this.membro = membro;
     })
   }
 
   updateMembro(): void {
-    this.membroService.update(this.membro).subscribe(membro => {
+    this.membroService.update(this.membro).subscribe(() => {
       this.membroService.showMessage('Membro atualizado!')
-      this.router.navigate['/membros'];
+      this.router.navigate(['/membros']);
     })
   }
 
   cancel(): void {
-    this.router.navigate['/membros']
+    this.router.navigate(['/membros'])
   }
 }

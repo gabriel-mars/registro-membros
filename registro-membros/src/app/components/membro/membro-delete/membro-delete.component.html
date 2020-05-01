@@ -3,11 +3,11 @@
 
     <form>
         <mat-form-field>
-            <input matInput placeholder="Nome" [value] = "membro.nome" name="nome" disabled/>
+            <input matInput placeholder="Nome" [value]="membro?.nome" name="nome" disabled/>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Congregação" [value] = "membro.congregacao" name="congregacao" disabled/>
+            <input matInput placeholder="Congregação" [value]="membro?.congregacao" name="congregacao" disabled/>
         </mat-form-field>
     </form>
 </mat-card>

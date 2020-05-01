@@ -35,8 +35,8 @@ export class MembroService {
     return this.http.get<Membro[]>(this.baseUrl);
   }
 
-  readById(id: string): Observable<Membro> {
-    const url = `${this.baseUrl}/${id}`
+  readById(id: number): Observable<Membro> {
+    const url = `${this.baseUrl}/${id}`;
     return this.http.get<Membro>(url).pipe(
       map((obj) => obj),
       catchError(e => this.errorHandler(e))
@@ -44,14 +44,14 @@ export class MembroService {
   }
 
   update(membro: Membro): Observable<Membro> {
-    const url = `${this.baseUrl}/${membro.id}`
+    const url = `${this.baseUrl}/${membro.id}`;
     return this.http.put<Membro>(url, membro).pipe(
       map((obj) => obj),
       catchError(e => this.errorHandler(e))
     );
   }
 
-  delete(id: number): Observable<Membro>{
+  delete(id: number): Observable<Membro> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<Membro>(url).pipe(
       map((obj) => obj),

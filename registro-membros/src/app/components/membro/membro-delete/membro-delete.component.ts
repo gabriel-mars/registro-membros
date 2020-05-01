@@ -19,7 +19,7 @@ export class MembroDeleteComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
     this.membroService.readById(id).subscribe(membro => {
       this.membro = membro;
     })
@@ -28,11 +28,11 @@ export class MembroDeleteComponent implements OnInit {
   deleteMembro(): void {
     this.membroService.delete(this.membro.id).subscribe(() => {
       this.membroService.showMessage('Membro excluído!');
-      this.router.navigate["/membros"];
+      this.router.navigate(['/membros']);
     })
   }
 
   cancel(): void {
-    this.router.navigate["/membros"];
+    this.router.navigate(['/membros']);
   }
 }

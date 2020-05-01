@@ -17,7 +17,6 @@ export class MembroReadComponent implements OnInit {
   ngOnInit(): void {
     this.membroService.read().subscribe(membros => {
       this.membros = membros
-      console.log(membros)
     })
   }
 }
