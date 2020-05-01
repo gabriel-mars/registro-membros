@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { MembrosCrudComponent } from './views/membros-crud/membros-crud.component';
+import { CongregacaoCreateComponent } from './components/congregacao/congregacao-create/congregacao-create.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,11 @@ const routes: Routes = [
   {
     path: "congregacoes",
     component: CongregacaoCrudComponent
-  }
+  },
+  {
+    path: "congregacoes/create",
+    component: CongregacaoCreateComponent
+  },
 ];
 
 @NgModule({
