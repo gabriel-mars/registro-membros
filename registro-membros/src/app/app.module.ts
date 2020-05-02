@@ -30,6 +30,7 @@ import { MembroUpdateComponent } from './components/membro/membro-update/membro-
 import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
 import { CongregacaoCrudComponent } from './views/congregacao-crud/congregacao-crud.component';
 import { CongregacaoCreateComponent } from './components/congregacao/congregacao-create/congregacao-create.component';
+import { CongregacaoReadComponent } from './components/congregacao/congregacao-read/congregacao-read.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CongregacaoCreateComponent } from './components/congregacao/congregacao
     MembroUpdateComponent,
     MembroDeleteComponent,
     CongregacaoCrudComponent,
-    CongregacaoCreateComponent
+    CongregacaoCreateComponent,
+    CongregacaoReadComponent
   ],
   imports: [
     BrowserModule,
