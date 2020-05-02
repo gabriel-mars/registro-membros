@@ -1,3 +1,5 @@
+import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
+import { CongregacaoUpdateComponent } from './components/congregacao/congregacao-update/congregacao-update.component';
 import { CongregacaoCrudComponent } from './views/congregacao-crud/congregacao-crud.component';
 import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
 import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
@@ -37,6 +39,14 @@ const routes: Routes = [
     path: "congregacoes/create",
     component: CongregacaoCreateComponent
   },
+  {
+    path: "congregacoes/update/:id",
+    component: CongregacaoUpdateComponent
+  },
+  {
+    path: "congregacoes/delete/:id",
+    component: CongregacaoDeleteComponent
+  }
 ];
 
 @NgModule({
