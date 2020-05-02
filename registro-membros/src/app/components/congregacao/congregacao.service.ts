@@ -43,6 +43,22 @@ export class CongregacaoService {
     );
   }
 
+  update(congregacao: Congregacao): Observable<Congregacao> {
+    const url = `${this.baseUrl}/${congregacao.id}`;
+    return this.http.put<Congregacao>(url, congregacao).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    );
+  }
+
+  delete(id: number): Observable<Congregacao> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Congregacao>(url).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    )
+  }
+
   errorHandler(e: any): Observable<any> {
     this.showMessage('Ocorreu um erro!', true);
     return EMPTY;
