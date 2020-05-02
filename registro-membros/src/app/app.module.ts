@@ -31,6 +31,8 @@ import { MembroDeleteComponent } from './components/membro/membro-delete/membro-
 import { CongregacaoCrudComponent } from './views/congregacao-crud/congregacao-crud.component';
 import { CongregacaoCreateComponent } from './components/congregacao/congregacao-create/congregacao-create.component';
 import { CongregacaoReadComponent } from './components/congregacao/congregacao-read/congregacao-read.component';
+import { CongregacaoUpdateComponent } from './components/congregacao/congregacao-update/congregacao-update.component';
+import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { CongregacaoReadComponent } from './components/congregacao/congregacao-r
     MembroDeleteComponent,
     CongregacaoCrudComponent,
     CongregacaoCreateComponent,
-    CongregacaoReadComponent
+    CongregacaoReadComponent,
+    CongregacaoUpdateComponent,
+    CongregacaoDeleteComponent
   ],
   imports: [
     BrowserModule,
