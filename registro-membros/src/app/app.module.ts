@@ -33,6 +33,7 @@ import { CongregacaoCreateComponent } from './components/congregacao/congregacao
 import { CongregacaoReadComponent } from './components/congregacao/congregacao-read/congregacao-read.component';
 import { CongregacaoUpdateComponent } from './components/congregacao/congregacao-update/congregacao-update.component';
 import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CongregacaoDeleteComponent } from './components/congregacao/congregacao
     CongregacaoCreateComponent,
     CongregacaoReadComponent,
     CongregacaoUpdateComponent,
-    CongregacaoDeleteComponent
+    CongregacaoDeleteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
