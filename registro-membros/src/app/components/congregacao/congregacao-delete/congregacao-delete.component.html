@@ -1,1 +1,33 @@
-<p>congregacao-delete works!</p>
+<mat-card>
+    <mat-card-title>Excluir Congregação</mat-card-title>
+
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome" [value] = "congregacao?.nome" name="nome" disabled/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Dirigente" [value] = "congregacao?.dirigente" name="dirigente" disabled/>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput placeholder="Endereço" [value] = "congregacao?.logradouro" name="logradouro" disabled/>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Bairro" [value] = "congregacao?.bairro" name="bairro" disabled/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Cidade" [value] = "congregacao?.cidade" name="cidade" disabled/>
+        </mat-form-field>
+    </form>
+</mat-card>
+
+<button mat-raised-button (click)="deleteCongregacao()" color="warn">
+    Excluir
+</button>
+
+<button mat-raised-button (click)="cancel()">
+    Cancelar
+</button>
