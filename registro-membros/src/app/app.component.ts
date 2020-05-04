@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { LoginService } from './components/login/login.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'registro-membros';
+
+  mostrarComponente: boolean = false;
+  mostrarLogin: boolean = true;
+
+  constructor(private loginService: LoginService){}
+
+  ngOnInit(): void {
+    this.loginService.mostrarComponentesEmitter.subscribe(
+      show => this.mostrarComponente = show
+    );
+
+    this.loginService.mostrarLoginEmitter.subscribe(
+      show => this.mostrarLogin = show
+    );
+  }
 }

@@ -1,3 +1,4 @@
+import { LoginService } from './../../components/login/login.service';
 import { HeaderService } from './../../components/template/header/header.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private headerService: HeaderService) { 
+  constructor(private headerService: HeaderService, private loginService: LoginService) { 
     headerService.headerData = {
       title: 'Início',
       icon: 'home',
@@ -17,6 +18,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
-
 }

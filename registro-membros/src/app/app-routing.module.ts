@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
 import { CongregacaoUpdateComponent } from './components/congregacao/congregacao-update/congregacao-update.component';
 import { CongregacaoCrudComponent } from './views/congregacao-crud/congregacao-crud.component';
@@ -13,6 +14,10 @@ import { CongregacaoCreateComponent } from './components/congregacao/congregacao
 const routes: Routes = [
   {
     path: "",
+    component: LoginComponent
+  },
+  {
+    path: "home",
     component: HomeComponent
   },
   {

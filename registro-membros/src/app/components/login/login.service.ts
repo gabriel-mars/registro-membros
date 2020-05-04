@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
+import { Usuario } from './usuario.model';
 import { Observable, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,13 @@ export class LoginService {
 
   baseUrl = "http://localhost:3001/usuarios";
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
+  mostrarComponentesEmitter = new EventEmitter<boolean>();
+  mostrarLoginEmitter = new EventEmitter<boolean>();
+
+  constructor(
+    private snackBar: MatSnackBar,
+    private http: HttpClient,
+    private router: Router ) { }
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
@@ -19,6 +27,13 @@ export class LoginService {
       verticalPosition: "top",
       panelClass: isError ? ["msg-success"] : ["msg-success"]
     });
+  }
+
+  fazerLogin(usuario: Usuario): void {
+
+    this.mostrarComponentesEmitter.emit(true);
+    this.mostrarLoginEmitter.emit(false);
+    this.router.navigate(['/home']);
   }
 
   errorHandler(e: any): Observable<any> {
