@@ -1,6 +1,7 @@
 import { LoginService } from './login.service';
 import { Usuario } from './usuario.model';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   mostrarLogin: boolean = true;
+  hide = true;
 
   usuario: Usuario = {
     nome: '',
@@ -17,9 +19,15 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+
   }
 
   login(): void {
