@@ -36,6 +36,9 @@ export class LoginService {
     this.mostrarComponentesEmitter.emit(true);
     this.mostrarLoginEmitter.emit(false);
     this.showMessage('Autenticado!', true);
+
+    usuario.senha = '';
+    localStorage.setItem('usuario', JSON.stringify(usuario));
     this.router.navigate(['/home']);
   }
 
