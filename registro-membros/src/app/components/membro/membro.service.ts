@@ -20,7 +20,7 @@ export class MembroService {
       duration: 300,
       horizontalPosition: "right",
       verticalPosition: "top",
-      panelClass: isError ? ["msg-success"] : ["msg-success"]
+      panelClass: isError ? ["msg-success"] : ["msg-error"]
     });
   }
 
