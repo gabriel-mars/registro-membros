@@ -19,6 +19,12 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
+  aux: Usuario = {
+    nome: '',
+    email: '',
+    senha: ''
+  }
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -31,6 +37,16 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.loginService.fazerLogin(this.usuario);
+    this.loginService.readByEmail(this.usuario).subscribe((aux) => {
+      this.aux = aux[0];
+      
+      if (this.aux === null || this.aux === undefined) {
+        this.loginService.showMessage('Usuário e/ou senha incorretos', false);
+      } else {
+        if (this.aux.email === this.usuario.email && this.aux.senha === this.usuario.senha) {
+          this.loginService.fazerLogin(this.aux);
+        }
+      }
+    });
   }
 }

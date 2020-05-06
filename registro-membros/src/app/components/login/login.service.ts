@@ -1,14 +1,17 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from './usuario.model';
 import { Observable, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Injectable, EventEmitter } from '@angular/core';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  usuario: Usuario;
 
   baseUrl = "http://localhost:3001/usuarios";
 
@@ -22,18 +25,26 @@ export class LoginService {
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
-      duration: 300,
+      duration: 400,
       horizontalPosition: "right",
       verticalPosition: "top",
-      panelClass: isError ? ["msg-success"] : ["msg-success"]
+      panelClass: isError ? ["msg-success"] : ["msg-error"]
     });
   }
 
   fazerLogin(usuario: Usuario): void {
-
     this.mostrarComponentesEmitter.emit(true);
     this.mostrarLoginEmitter.emit(false);
+    this.showMessage('Autenticado!', true);
     this.router.navigate(['/home']);
+  }
+
+  readByEmail(usuario: Usuario): Observable<Usuario> {
+    const url = `${this.baseUrl}/?email=${usuario.email}`;
+    return this.http.get<Usuario>(url).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   errorHandler(e: any): Observable<any> {
