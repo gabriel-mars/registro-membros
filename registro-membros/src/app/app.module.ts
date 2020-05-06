@@ -36,6 +36,7 @@ import { CongregacaoReadComponent } from './components/congregacao/congregacao-r
 import { CongregacaoUpdateComponent } from './components/congregacao/congregacao-update/congregacao-update.component';
 import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
 import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LoginComponent } from './components/login/login.component';
     CongregacaoReadComponent,
     CongregacaoUpdateComponent,
     CongregacaoDeleteComponent,
-    LoginComponent
+    LoginComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
