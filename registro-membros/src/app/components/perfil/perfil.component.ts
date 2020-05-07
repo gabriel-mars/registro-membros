@@ -12,6 +12,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class PerfilComponent implements OnInit {
 
   usuario: Usuario;
+  aux: Usuario;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -26,7 +27,23 @@ export class PerfilComponent implements OnInit {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
   }
 
-  update(): void {
-    console.log(this.usuario);
+  readByupdate(): void {
+    this.perfilService.readById(this.usuario.id).subscribe((usuario) => {
+      this.aux = usuario;
+      this.update(this.aux);
+    });
+  }
+
+  update(aux: Usuario): void {
+    aux.telefone = this.usuario.telefone;
+    aux.nome = this.usuario.nome;
+    aux.email = this.usuario.email;
+    aux.igreja = this.usuario.igreja;
+
+    this.perfilService.update(aux).subscribe(() => {
+      localStorage.setItem('usuario', JSON.stringify(aux));
+      this.perfilService.showMessage('Dados atualizados!', true);
+      this.router.navigate(['/perfil']);
+    });
   }
 }
