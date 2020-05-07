@@ -26,7 +26,7 @@ export class CongregacaoDeleteComponent implements OnInit {
 
   deleteCongregacao(): void {
     this.congregacaoService.delete(this.congregacao.id).subscribe(() => {
-      this.congregacaoService.showMessage('Congregação excluída!');
+      this.congregacaoService.showMessage('Congregação excluída!', true);
       this.router.navigate(['/congregacoes']);
     })
   }

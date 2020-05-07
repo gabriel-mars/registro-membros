@@ -25,7 +25,7 @@ export class CongregacaoCreateComponent implements OnInit {
 
   createCongregacao(): void {
     this.congregacaoService.create(this.congregacao).subscribe(() => {
-      this.congregacaoService.showMessage('Operação realizada!');
+      this.congregacaoService.showMessage('Operação realizada!', true);
       this.router.navigate(['/congregacoes']);
     });
     

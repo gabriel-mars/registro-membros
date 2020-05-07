@@ -27,7 +27,7 @@ export class MembroDeleteComponent implements OnInit {
 
   deleteMembro(): void {
     this.membroService.delete(this.membro.id).subscribe(() => {
-      this.membroService.showMessage('Membro excluído!');
+      this.membroService.showMessage('Membro excluído!', true);
       this.router.navigate(['/membros']);
     })
   }

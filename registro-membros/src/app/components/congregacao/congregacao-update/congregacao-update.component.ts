@@ -26,7 +26,7 @@ export class CongregacaoUpdateComponent implements OnInit {
 
   updateCongregacao(): void {
     this.congregacaoService.update(this.congregacao).subscribe(() => {
-      this.congregacaoService.showMessage('Congregação atualizada!');
+      this.congregacaoService.showMessage('Congregação atualizada!', true);
       this.router.navigate(['/congregacoes']);
     })
   }
