@@ -1,3 +1,4 @@
+import { SenhaComponent } from './components/senha/senha.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { LoginComponent } from './components/login/login.component';
 import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: "perfil",
     component: PerfilComponent
+  },
+  {
+    path: "perfil/senha",
+    component: SenhaComponent
   }
 ];
 

@@ -46,4 +46,8 @@ export class PerfilComponent implements OnInit {
       this.router.navigate(['/perfil']);
     });
   }
+
+  updateSenha(): void {
+    this.router.navigate(['/perfil/senha']);
+  }
 }

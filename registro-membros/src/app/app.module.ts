@@ -37,6 +37,7 @@ import { CongregacaoUpdateComponent } from './components/congregacao/congregacao
 import { CongregacaoDeleteComponent } from './components/congregacao/congregacao-delete/congregacao-delete.component';
 import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { SenhaComponent } from './components/senha/senha.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     CongregacaoUpdateComponent,
     CongregacaoDeleteComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    SenhaComponent
   ],
   imports: [
     BrowserModule,
