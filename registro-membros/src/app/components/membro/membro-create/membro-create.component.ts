@@ -28,7 +28,7 @@ export class MembroCreateComponent implements OnInit {
   ]);
 
   congregacoes: Congregacao[]
-
+  
   constructor(
     private membroService: MembroService, 
     private congregacaoService: CongregacaoService, 
