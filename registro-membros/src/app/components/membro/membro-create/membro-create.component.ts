@@ -1,7 +1,10 @@
+import { CongregacaoService } from './../../congregacao/congregacao.service';
 import { Membro } from './../membro.model';
 import { MembroService } from './../membro.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
+import { Congregacao } from '../../congregacao/congregacao.model';
 
 @Component({
   selector: 'app-membro-create',
@@ -12,12 +15,29 @@ export class MembroCreateComponent implements OnInit {
 
   membro: Membro = {
     nome: '',
-    congregacao: ''
+    cpf: '',
+    congregacao: '',
+    telefone: '',
+    email: '',
+    endereco: ''
   }
 
-  constructor(private membroService: MembroService, private router: Router) { }
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  congregacoes: Congregacao[]
+
+  constructor(
+    private membroService: MembroService, 
+    private congregacaoService: CongregacaoService, 
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.congregacaoService.read().subscribe(congregacoes => {
+      this.congregacoes = congregacoes;
+    })
   }
 
   createMembro(): void {

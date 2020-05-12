@@ -2,13 +2,58 @@
     <mat-card-title>Novo Membro</mat-card-title>
 
     <form>
-        <mat-form-field>
-            <input matInput placeholder="Nome" [(ngModel)] = "membro.nome" name="nome"/>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput placeholder="Congregação" [(ngModel)] = "membro.congregacao" name="congregacao"/>
-        </mat-form-field>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="Nome" [(ngModel)] = "membro.nome" name="nome"/>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>CPF</mat-label>
+                        <input matInput placeholder="000.000.000-00" [(ngModel)] = "membro.cpf" name="cpf" required>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Telefone</mat-label>
+                        <input matInput placeholder="(XX) XXXXX-XXXX" [(ngModel)] = "membro.telefone" name="telefone" required>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput placeholder="exemplo@mail.com" [(ngModel)] = "membro.email" [(formControl)]="emailFormControl" name="email"/>
+                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Digite um e-mail válido
+                        </mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Email é <strong>obrigatório</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Endereço</mat-label>
+                        <input matInput placeholder="Rua exemplo, 15" [(ngModel)] = "membro.endereco" name="endereco" required>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Congregação</mat-label>
+                        <mat-select [(ngModel)] = "membro.congregacao" name="congregacao" required>
+                          <mat-option *ngFor="let cg of congregacoes" [value]="cg.nome">{{ cg.nome }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
     </form>
 </mat-card>
 

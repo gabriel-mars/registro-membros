@@ -27,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { MembroReadComponent } from './components/membro/membro-read/membro-read.component';
 import { MembroUpdateComponent } from './components/membro/membro-update/membro-update.component';
 import { MembroDeleteComponent } from './components/membro/membro-delete/membro-delete.component';
@@ -77,7 +78,8 @@ import { SenhaComponent } from './components/senha/senha.component';
     MatTableModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
