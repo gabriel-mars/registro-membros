@@ -1,3 +1,4 @@
+import { HeaderService } from './../template/header/header.service';
 import { Usuario } from './../login/usuario.model';
 import { Router } from '@angular/router';
 import { PerfilService } from './perfil.service';
@@ -21,7 +22,14 @@ export class PerfilComponent implements OnInit {
 
   constructor(
     private perfilService: PerfilService,
-    private router: Router) { }
+    private headerService: HeaderService,
+    private router: Router) {
+      headerService.headerData = {
+        title: 'Perfil',
+        icon: 'person',
+        routeUrl: '/perfil'
+      }
+    }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));

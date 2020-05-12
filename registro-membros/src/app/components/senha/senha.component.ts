@@ -1,3 +1,4 @@
+import { HeaderService } from './../template/header/header.service';
 import { Usuario } from './../login/usuario.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PerfilService } from './../perfil/perfil.service';
@@ -20,7 +21,14 @@ export class SenhaComponent implements OnInit {
 
   constructor(
     private perfilService: PerfilService,
-    private router: Router) { }
+    private headerService: HeaderService,
+    private router: Router) {
+      headerService.headerData = {
+        title: 'Senha',
+        icon: 'vpn_key',
+        routeUrl: '/perfil/senha'
+      }
+    }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
