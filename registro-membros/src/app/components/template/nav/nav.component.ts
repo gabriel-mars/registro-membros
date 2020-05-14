@@ -12,4 +12,8 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sair(): void {
+    localStorage.clear();
+    window.location.reload();
+  }
 }
