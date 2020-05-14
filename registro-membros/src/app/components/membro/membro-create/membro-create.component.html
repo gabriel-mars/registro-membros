@@ -13,7 +13,7 @@
                 <td>
                     <mat-form-field class="example-full-width">
                         <mat-label>CPF</mat-label>
-                        <input matInput placeholder="000.000.000-00" [(ngModel)] = "membro.cpf" name="cpf" required>
+                        <input matInput placeholder="000.000.000-00" [(ngModel)] = "membro.cpf" mask="000.000.000-00" name="cpf" required>
                     </mat-form-field>
                 </td>
             </tr>
@@ -21,7 +21,7 @@
                 <td>
                     <mat-form-field class="example-full-width">
                         <mat-label>Telefone</mat-label>
-                        <input matInput placeholder="(XX) XXXXX-XXXX" [(ngModel)] = "membro.telefone" name="telefone" required>
+                        <input matInput placeholder="(XX) XXXXX-XXXX" [(ngModel)] = "membro.telefone" mask="(00) 00000-0000" name="telefone" required>
                     </mat-form-field>
                 </td>
                 <td>
