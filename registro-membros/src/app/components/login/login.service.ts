@@ -13,7 +13,7 @@ export class LoginService {
 
   usuario: Usuario;
 
-  baseUrl = "http://localhost:3001/usuarios";
+  baseUrl = "https://radiant-fortress-80374.herokuapp.com/usuarios";
 
   mostrarComponentesEmitter = new EventEmitter<boolean>();
   mostrarLoginEmitter = new EventEmitter<boolean>();

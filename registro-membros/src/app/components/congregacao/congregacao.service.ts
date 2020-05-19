@@ -11,7 +11,7 @@ import { Congregacao } from './congregacao.model';
 
 export class CongregacaoService {
 
-  baseUrl = "http://localhost:3001/congregacoes";
+  baseUrl = "https://radiant-fortress-80374.herokuapp.com/congregacoes";
 
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
 

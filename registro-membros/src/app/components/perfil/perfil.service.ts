@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class PerfilService {
 
-  baseUrl = "http://localhost:3001/usuarios";
+  baseUrl = "https://radiant-fortress-80374.herokuapp.com/usuarios";
 
   constructor(
     private snackBar: MatSnackBar,

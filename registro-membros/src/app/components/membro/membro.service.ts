@@ -11,7 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 
 export class MembroService {
 
-  baseUrl = "http://localhost:3001/membros";
+  baseUrl = "https://radiant-fortress-80374.herokuapp.com/membros";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
