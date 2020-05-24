@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "registro-membros-d3d48": {
+      "hosting": {
+        "registro-membros": [
+          "registro-membros-d3d48"
+        ]
+      }
+    }
+  }
+}

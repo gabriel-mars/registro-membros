@@ -1,6 +1,8 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -81,7 +83,8 @@ import { SenhaComponent } from './components/senha/senha.component';
     ReactiveFormsModule,
     MatIconModule,
     MatSelectModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
