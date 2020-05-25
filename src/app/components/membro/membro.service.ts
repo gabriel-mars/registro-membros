@@ -1,3 +1,4 @@
+import { Usuario } from './../login/usuario.model';
 import { Membro } from './membro.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 })
 
 export class MembroService {
+  usuario: Usuario;
 
   baseUrl = "https://radiant-fortress-80374.herokuapp.com/membros";
 
@@ -29,6 +31,8 @@ export class MembroService {
   }
 
   create(membro: Membro): void {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    membro.igreja = this.usuario.igreja;
     this.firestore.collection('membro').doc(membro.cpf).set(membro);
     this.showMessage('Membro cadastrado!', true);
   }

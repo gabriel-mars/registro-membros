@@ -6,4 +6,5 @@ export interface Membro {
     telefone: string
     email: string
     endereco: string
+    igreja?: string
 }
