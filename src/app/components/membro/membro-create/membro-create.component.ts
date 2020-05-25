@@ -41,11 +41,8 @@ export class MembroCreateComponent implements OnInit {
   }
 
   createMembro(): void {
-    this.membroService.create(this.membro).subscribe(() => {
-      this.membroService.showMessage('Membro cadastrado!', true);
-      this.router.navigate(['/membros']);
-    });
-    
+    this.membroService.create(this.membro);
+    this.router.navigate(['/membros']);
   }
 
   cancel(): void {

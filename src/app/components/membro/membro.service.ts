@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore'
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class MembroService {
 
   baseUrl = "https://radiant-fortress-80374.herokuapp.com/membros";
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private http: HttpClient,
+    private firestore: AngularFirestore) { }
 
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
@@ -24,11 +28,9 @@ export class MembroService {
     });
   }
 
-  create(membro: Membro): Observable<Membro> {
-    return this.http.post<Membro>(this.baseUrl, membro).pipe(
-      map((obj) => obj),
-      catchError(e => this.errorHandler(e))
-    );
+  create(membro: Membro): void {
+    this.firestore.collection('membro').doc(membro.cpf).set(membro);
+    this.showMessage('Membro cadastrado!', true);
   }
 
   read(): Observable<Membro[]> {
