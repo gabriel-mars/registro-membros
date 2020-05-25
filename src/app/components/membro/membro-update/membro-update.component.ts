@@ -34,8 +34,8 @@ export class MembroUpdateComponent implements OnInit {
     this.membroService.readById(id).subscribe((membro) => {
       this.membro = membro;
     })
-    this.congregacaoService.read().subscribe(congregacoes => {
-      this.congregacoes = congregacoes;
+    this.congregacaoService.getCongregacoes().subscribe(congregacoes => {
+      //this.congregacoes = congregacoes;
     })
   }
 

@@ -35,8 +35,8 @@ export class MembroCreateComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.congregacaoService.read().subscribe(congregacoes => {
-      this.congregacoes = congregacoes;
+    this.congregacaoService.getCongregacoes().subscribe(congregacoes => {
+      //this.congregacoes = congregacoes;
     })
   }
 

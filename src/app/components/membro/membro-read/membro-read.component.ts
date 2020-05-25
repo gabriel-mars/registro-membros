@@ -1,6 +1,8 @@
+import { Usuario } from './../../../models/usuario.model';
 import { MembroService } from '../../../services/membro.service';
 import { Membro } from '../../../models/membro.model';
 import { Component, OnInit } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-membro-read',
@@ -9,14 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembroReadComponent implements OnInit {
 
-  membros: Membro[]
-  displayedColumns = ['id', 'nome', 'congregacao', 'action']
+  displayedColumns: string[] = ['nome', 'congregacao', 'action'];
+  dataSource = new MembroDataSource(this.membroService);
 
-  constructor(private membroService: MembroService) { }
+  constructor(private membroService: MembroService) {}
 
   ngOnInit(): void {
-    this.membroService.read().subscribe(membros => {
-      this.membros = membros
-    })
+    
   }
+}
+
+export class MembroDataSource extends DataSource<any> {
+  constructor(private membroService: MembroService) {
+    super()
+  }
+ 
+  connect() {
+    return this.membroService.getMembros();
+  }
+ 
+  disconnect() {}
 }
