@@ -1,7 +1,7 @@
 import { HeaderService } from './../template/header/header.service';
-import { Usuario } from './../login/usuario.model';
+import { Usuario } from '../../models/usuario.model';
 import { Router } from '@angular/router';
-import { PerfilService } from './perfil.service';
+import { PerfilService } from '../../services/perfil.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -50,7 +50,7 @@ export class PerfilComponent implements OnInit {
 
     this.perfilService.update(aux).subscribe(() => {
       localStorage.setItem('usuario', JSON.stringify(aux));
-      this.perfilService.showMessage('Dados atualizados!', true);
+      //this.perfilService.showMessage('Dados atualizados!', true);
       this.router.navigate(['/perfil']);
     });
   }

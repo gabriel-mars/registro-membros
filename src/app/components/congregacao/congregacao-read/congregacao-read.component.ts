@@ -1,6 +1,6 @@
-import { CongregacaoService } from './../congregacao.service';
+import { CongregacaoService } from '../../../services/congregacao.service';
 import { Component, OnInit } from '@angular/core';
-import { Congregacao } from '../congregacao.model';
+import { Congregacao } from '../../../models/congregacao.model';
 
 @Component({
   selector: 'app-congregacao-read',

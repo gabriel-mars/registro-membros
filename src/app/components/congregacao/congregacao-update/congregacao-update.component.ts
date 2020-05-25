@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { CongregacaoService } from './../congregacao.service';
+import { CongregacaoService } from '../../../services/congregacao.service';
 import { Component, OnInit } from '@angular/core';
-import { Congregacao } from '../congregacao.model';
+import { Congregacao } from '../../../models/congregacao.model';
 
 @Component({
   selector: 'app-congregacao-update',
@@ -26,7 +26,7 @@ export class CongregacaoUpdateComponent implements OnInit {
 
   updateCongregacao(): void {
     this.congregacaoService.update(this.congregacao).subscribe(() => {
-      this.congregacaoService.showMessage('Congregação atualizada!', true);
+      //this.congregacaoService.showMessage('Congregação atualizada!', true);
       this.router.navigate(['/congregacoes']);
     })
   }

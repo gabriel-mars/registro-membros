@@ -1,7 +1,8 @@
+import { ToastService } from './../../services/toast.service';
 import { HeaderService } from './../template/header/header.service';
-import { Usuario } from './../login/usuario.model';
+import { Usuario } from '../../models/usuario.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PerfilService } from './../perfil/perfil.service';
+import { PerfilService } from '../../services/perfil.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -22,7 +23,8 @@ export class SenhaComponent implements OnInit {
   constructor(
     private perfilService: PerfilService,
     private headerService: HeaderService,
-    private router: Router) {
+    private router: Router,
+    private toastService: ToastService) {
       headerService.headerData = {
         title: 'Senha',
         icon: 'vpn_key',
@@ -43,17 +45,17 @@ export class SenhaComponent implements OnInit {
         if (this.aux.nome === this.usuario.senha) {
           this.usuario.senha = this.aux.senha;
           this.perfilService.update(this.usuario).subscribe(() => {
-            this.perfilService.showMessage("Senha atualizada!", true);
+            this.toastService.showMessage("Senha atualizada!", true);
             this.router.navigate(['/perfil']);
           });
         } {
-          this.perfilService.showMessage("Informe sua senha atual!", false);
+          this.toastService.showMessage("Informe sua senha atual!", false);
         }
       } else {
-        this.perfilService.showMessage("Nova senha e confirmação devem ser iguais!", false);
+        this.toastService.showMessage("Nova senha e confirmação devem ser iguais!", false);
       }
     } else {
-      this.perfilService.showMessage("Preencha os dados corretamente!", false);
+      this.toastService.showMessage("Preencha os dados corretamente!", false);
     }
   }
 

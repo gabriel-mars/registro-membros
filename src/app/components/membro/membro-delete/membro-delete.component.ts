@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { MembroService } from './../membro.service';
-import { Membro } from './../membro.model';
+import { MembroService } from '../../../services/membro.service';
+import { Membro } from '../../../models/membro.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -27,7 +27,7 @@ export class MembroDeleteComponent implements OnInit {
 
   deleteMembro(): void {
     this.membroService.delete(this.membro.id).subscribe(() => {
-      this.membroService.showMessage('Membro excluído!', true);
+      //this.membroService.showMessage('Membro excluído!', true);
       this.router.navigate(['/membros']);
     })
   }

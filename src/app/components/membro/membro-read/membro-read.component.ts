@@ -1,5 +1,5 @@
-import { MembroService } from './../membro.service';
-import { Membro } from './../membro.model';
+import { MembroService } from '../../../services/membro.service';
+import { Membro } from '../../../models/membro.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

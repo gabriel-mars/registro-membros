@@ -1,10 +1,10 @@
-import { CongregacaoService } from './../../congregacao/congregacao.service';
+import { CongregacaoService } from '../../../services/congregacao.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MembroService } from './../membro.service';
+import { MembroService } from '../../../services/membro.service';
 import { Component, OnInit } from '@angular/core';
-import { Membro } from '../membro.model';
+import { Membro } from '../../../models/membro.model';
 import { FormControl, Validators } from '@angular/forms';
-import { Congregacao } from '../../congregacao/congregacao.model';
+import { Congregacao } from '../../../models/congregacao.model';
 
 @Component({
   selector: 'app-membro-update',
@@ -41,7 +41,7 @@ export class MembroUpdateComponent implements OnInit {
 
   updateMembro(): void {
     this.membroService.update(this.membro).subscribe(() => {
-      this.membroService.showMessage('Membro atualizado!', true)
+      //this.membroService.showMessage('Membro atualizado!', true)
       this.router.navigate(['/membros']);
     })
   }

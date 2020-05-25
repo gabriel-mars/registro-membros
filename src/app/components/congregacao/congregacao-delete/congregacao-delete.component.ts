@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { CongregacaoService } from './../congregacao.service';
+import { CongregacaoService } from '../../../services/congregacao.service';
 import { Component, OnInit } from '@angular/core';
-import { Congregacao } from '../congregacao.model';
+import { Congregacao } from '../../../models/congregacao.model';
 
 @Component({
   selector: 'app-congregacao-delete',
@@ -26,7 +26,7 @@ export class CongregacaoDeleteComponent implements OnInit {
 
   deleteCongregacao(): void {
     this.congregacaoService.delete(this.congregacao.id).subscribe(() => {
-      this.congregacaoService.showMessage('Congregação excluída!', true);
+      //this.congregacaoService.showMessage('Congregação excluída!', true);
       this.router.navigate(['/congregacoes']);
     })
   }

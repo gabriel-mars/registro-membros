@@ -1,5 +1,5 @@
-import { LoginService } from './login.service';
-import { Usuario } from './usuario.model';
+import { LoginService } from '../../services/login.service';
+import { Usuario } from '../../models/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 

@@ -1,10 +1,10 @@
-import { CongregacaoService } from './../../congregacao/congregacao.service';
-import { Membro } from './../membro.model';
-import { MembroService } from './../membro.service';
+import { CongregacaoService } from '../../../services/congregacao.service';
+import { Membro } from '../../../models/membro.model';
+import { MembroService } from '../../../services/membro.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
-import { Congregacao } from '../../congregacao/congregacao.model';
+import { Congregacao } from '../../../models/congregacao.model';
 
 @Component({
   selector: 'app-membro-create',
