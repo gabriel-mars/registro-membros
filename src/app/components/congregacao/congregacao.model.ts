@@ -5,4 +5,5 @@ export interface Congregacao {
     bairro: string
     cidade: string
     dirigente: string
+    igreja?: string
 }
