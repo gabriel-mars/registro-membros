@@ -44,10 +44,10 @@ export class SenhaComponent implements OnInit {
       if (this.aux.senha === this.aux.email) {
         if (this.aux.nome === this.usuario.senha) {
           this.usuario.senha = this.aux.senha;
-          this.perfilService.update(this.usuario).subscribe(() => {
-            this.toastService.showMessage("Senha atualizada!", true);
-            this.router.navigate(['/perfil']);
-          });
+          //this.perfilService.update(this.usuario).subscribe(() => {
+            //this.toastService.showMessage("Senha atualizada!", true);
+            //this.router.navigate(['/perfil']);
+          //});
         } {
           this.toastService.showMessage("Informe sua senha atual!", false);
         }

@@ -36,10 +36,7 @@ export class PerfilComponent implements OnInit {
   }
 
   readByupdate(): void {
-    this.perfilService.readById(this.usuario.id).subscribe((usuario) => {
-      this.aux = usuario;
-      this.update(this.aux);
-    });
+    this.update(this.usuario);
   }
 
   update(aux: Usuario): void {
@@ -48,11 +45,8 @@ export class PerfilComponent implements OnInit {
     aux.email = this.usuario.email;
     aux.igreja = this.usuario.igreja;
 
-    this.perfilService.update(aux).subscribe(() => {
-      localStorage.setItem('usuario', JSON.stringify(aux));
-      //this.perfilService.showMessage('Dados atualizados!', true);
-      this.router.navigate(['/perfil']);
-    });
+    this.perfilService.update(aux);
+    this.router.navigate(['/perfil']);
   }
 
   updateSenha(): void {
