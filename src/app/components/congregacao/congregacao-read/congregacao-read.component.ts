@@ -10,14 +10,12 @@ import { DataSource } from '@angular/cdk/collections';
 })
 export class CongregacaoReadComponent implements OnInit {
 
-  congregacoes: Congregacao[]
   displayedColumns = ['nome', 'bairro', 'action'];
   dataSource = new CongregacaoDataSource(this.congregacaoService);
 
-  constructor(private congregacaoService: CongregacaoService) { }
+  constructor(private congregacaoService: CongregacaoService) {}
 
   ngOnInit(): void {
-
   }
 }
 
