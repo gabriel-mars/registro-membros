@@ -32,8 +32,9 @@ export class MembroCreateComponent implements OnInit {
   ]);
 
   dataSource = new CongregacaoDataSource(this.congregacaoService);
-  congregacoes: Congregacao[];
+  congregacoes: Array<Congregacao> = [];
   usuario: Usuario;
+  congregacao: Congregacao;
   
   constructor(
     private membroService: MembroService, 
@@ -44,15 +45,14 @@ export class MembroCreateComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     let codIgreja = this.usuario.igreja;
-    let citiesRef = this.firestore.collection('congregacoes', ref => ref.where('igreja', '==', `${codIgreja}`)).valueChanges();
-    let query = citiesRef.toPromise()
-    .then(snapshot => {
-      console.log(snapshot);
-  })
-  .catch(err => {
-    console.log('Error getting documents', err);
-  });
-
+    let citiesRef = this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+            let aux = doc.id;
+            this.congregacao = doc.data() as Congregacao;
+            this.congregacoes.push(this.congregacao);
+        });
+    });
   }
 
   createMembro(): void {
