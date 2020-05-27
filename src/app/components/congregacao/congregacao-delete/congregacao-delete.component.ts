@@ -1,7 +1,5 @@
 import { Usuario } from './../../../models/usuario.model';
-import { Observable } from 'rxjs';
-import { ToastService } from './../../../services/toast.service';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CongregacaoService } from '../../../services/congregacao.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,8 +20,7 @@ export class CongregacaoDeleteComponent implements OnInit {
     private congregacaoService: CongregacaoService, 
     private router: Router, 
     private route: ActivatedRoute,
-    private firestore: AngularFirestore,
-    private toastService: ToastService) { }
+    private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -37,10 +34,8 @@ export class CongregacaoDeleteComponent implements OnInit {
   }
 
   deleteCongregacao(): void {
-    this.congregacaoService.delete(this.congregacao.id).subscribe(() => {
-      //this.congregacaoService.showMessage('Congregação excluída!', true);
-      this.router.navigate(['/congregacoes']);
-    })
+    this.congregacaoService.delete(this.congregacao.id);
+    this.router.navigate(['/congregacoes']);
   }
 
   cancel(): void{

@@ -13,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 
 export class CongregacaoService {
   usuario: Usuario;
+  congregacao: Congregacao;
 
   baseUrl = "https://radiant-fortress-80374.herokuapp.com/congregacoes";
 
@@ -51,11 +52,26 @@ export class CongregacaoService {
     );
   }
 
-  delete(id: number): Observable<Congregacao> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Congregacao>(url).pipe(
-      map((obj) => obj),
-      catchError(e => this.toastService.errorHandler(e))
-    )
+  delete(id: number): void {
+    
+    this.firestore.collection('congregacao').get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+            let aux = doc.id;
+            this.congregacao = doc.data() as Congregacao;
+            
+            if (this.congregacao.id == id){
+              this.firestore.collection('congregacao').doc(`${aux}`).delete()
+              .then(() => {
+                this.toastService.showMessage('Congregação removida!', true);
+              })
+              .catch((error) => {
+                this.toastService.showMessage('Ocorreu um erro.', false);
+                console.log(error);
+              });
+            }
+            console.log(id);
+        });
+    });
   }
 }
