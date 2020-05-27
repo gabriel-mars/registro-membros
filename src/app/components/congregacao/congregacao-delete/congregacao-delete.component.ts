@@ -1,3 +1,7 @@
+import { Usuario } from './../../../models/usuario.model';
+import { Observable } from 'rxjs';
+import { ToastService } from './../../../services/toast.service';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CongregacaoService } from '../../../services/congregacao.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,19 +13,27 @@ import { Congregacao } from '../../../models/congregacao.model';
   styleUrls: ['./congregacao-delete.component.css']
 })
 export class CongregacaoDeleteComponent implements OnInit {
-
+  usuario: Usuario;
+  
   congregacao: Congregacao;
+  aux: Congregacao;
 
   constructor(
     private congregacaoService: CongregacaoService, 
     private router: Router, 
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore,
+    private toastService: ToastService) { }
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.congregacaoService.readById(id).subscribe(congregacao => {
-      this.congregacao = congregacao;
-    })
+    this.firestore.collection('congregacao').get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+            this.aux = doc.data() as Congregacao;
+            if (this.aux.id == id) this.congregacao = this.aux;
+        });
+    });
   }
 
   deleteCongregacao(): void {
