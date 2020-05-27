@@ -53,7 +53,6 @@ export class CongregacaoService {
   }
 
   delete(id: number): void {
-    
     this.firestore.collection('congregacao').get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
@@ -70,7 +69,6 @@ export class CongregacaoService {
                 console.log(error);
               });
             }
-            console.log(id);
         });
     });
   }

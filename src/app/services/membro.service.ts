@@ -13,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 
 export class MembroService {
   usuario: Usuario;
+  membro: Membro;
 
   baseUrl = "https://radiant-fortress-80374.herokuapp.com/membros";
 
@@ -24,6 +25,7 @@ export class MembroService {
   create(membro: Membro): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     membro.igreja = this.usuario.igreja;
+    membro.id = parseInt(Math.random().toString(16).substr(2, 4));
     this.firestore.collection('membro').doc(membro.cpf).set(membro);
     this.toastService.showMessage('Membro cadastrado!', true);
   }
@@ -50,11 +52,24 @@ export class MembroService {
     );
   }
 
-  delete(id: number): Observable<Membro> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Membro>(url).pipe(
-      map((obj) => obj),
-      catchError(e => this.toastService.errorHandler(e))
-    );
+  delete(id: number): void {
+    this.firestore.collection('membro').get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+            let aux = doc.id;
+            this.membro = doc.data() as Membro;
+            
+            if (this.membro.id == id){
+              this.firestore.collection('membro').doc(`${aux}`).delete()
+              .then(() => {
+                this.toastService.showMessage('Membro removido!', true);
+              })
+              .catch((error) => {
+                this.toastService.showMessage('Ocorreu um erro.', false);
+                console.log(error);
+              });
+            }
+        });
+    });
   }
 }

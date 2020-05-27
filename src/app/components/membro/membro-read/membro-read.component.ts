@@ -1,6 +1,4 @@
-import { Usuario } from './../../../models/usuario.model';
 import { MembroService } from '../../../services/membro.service';
-import { Membro } from '../../../models/membro.model';
 import { Component, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 
