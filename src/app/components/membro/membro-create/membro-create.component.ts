@@ -1,7 +1,5 @@
 import { Usuario } from './../../../models/usuario.model';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { DataSource } from '@angular/cdk/collections';
 import { CongregacaoService } from '../../../services/congregacao.service';
 import { Membro } from '../../../models/membro.model';
 import { MembroService } from '../../../services/membro.service';
@@ -31,21 +29,19 @@ export class MembroCreateComponent implements OnInit {
     Validators.email,
   ]);
 
-  dataSource = new CongregacaoDataSource(this.congregacaoService);
   congregacoes: Array<Congregacao> = [];
   usuario: Usuario;
   congregacao: Congregacao;
   
   constructor(
     private membroService: MembroService, 
-    private congregacaoService: CongregacaoService, 
     private router: Router,
     private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     let codIgreja = this.usuario.igreja;
-    let citiesRef = this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
+    let congrRef = this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
             let aux = doc.id;
@@ -63,16 +59,4 @@ export class MembroCreateComponent implements OnInit {
   cancel(): void {
     this.router.navigate(['/membros']);
   }
-}
-
-export class CongregacaoDataSource extends DataSource<any> {
-  constructor(private congregacaoService: CongregacaoService) {
-    super()
-  }
- 
-  connect() {
-    return this.congregacaoService.getCongregacoes();
-  }
- 
-  disconnect() {}
 }
