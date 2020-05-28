@@ -15,7 +15,6 @@ export class CongregacaoUpdateComponent implements OnInit {
   congregacao: Congregacao;
   usuario: Usuario;
 
-
   constructor(
     private congregacaoService: CongregacaoService,
     private router: Router,
@@ -37,10 +36,8 @@ export class CongregacaoUpdateComponent implements OnInit {
   }
 
   updateCongregacao(): void {
-    this.congregacaoService.update(this.congregacao).subscribe(() => {
-      //this.congregacaoService.showMessage('Congregação atualizada!', true);
-      this.router.navigate(['/congregacoes']);
-    })
+    this.congregacaoService.update(this.congregacao);
+    this.router.navigate(['/congregacoes']);
   }
 
   cancel(): void {

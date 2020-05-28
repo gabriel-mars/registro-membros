@@ -33,7 +33,6 @@ export class PerfilService {
   }
 
   update(usuario: Usuario): void {
-    console.log(usuario);
     let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
     let getDoc = userRef.get().toPromise()
     .then(doc => {

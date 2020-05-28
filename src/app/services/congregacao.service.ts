@@ -44,12 +44,22 @@ export class CongregacaoService {
     );
   }
 
-  update(congregacao: Congregacao): Observable<Congregacao> {
-    const url = `${this.baseUrl}/${congregacao.id}`;
-    return this.http.put<Congregacao>(url, congregacao).pipe(
-      map((obj) => obj),
-      catchError(e => this.toastService.errorHandler(e))
-    );
+  update(congregacao: Congregacao): void {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    let codIgreja = this.usuario.igreja;
+    
+    this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', congregacao.id)).get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+          this.congregacao = doc.data() as Congregacao;
+          this.firestore.doc(`congregacao/${doc.id}`).set(congregacao);
+          this.toastService.showMessage('Congregação atualizada!', true);
+        })    
+    })
+    .catch(err => {
+      this.toastService.showMessage('Ocorreu um erro!', false);
+      console.log('Error getting document', err);
+    });
   }
 
   delete(id: number): void {

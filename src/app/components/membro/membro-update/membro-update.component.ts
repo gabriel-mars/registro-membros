@@ -47,7 +47,6 @@ export class MembroUpdateComponent implements OnInit {
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
-            let aux = doc.id;
             this.congregacao = doc.data() as Congregacao;
             this.congregacoes.push(this.congregacao);
         });
