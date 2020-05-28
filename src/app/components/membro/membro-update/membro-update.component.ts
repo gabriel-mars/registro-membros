@@ -1,4 +1,5 @@
-import { CongregacaoService } from '../../../services/congregacao.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Usuario } from './../../../models/usuario.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MembroService } from '../../../services/membro.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,29 +15,43 @@ import { Congregacao } from '../../../models/congregacao.model';
 export class MembroUpdateComponent implements OnInit {
 
   membro: Membro;
+  usuario: Usuario;
+  congregacao: Congregacao;
+  congregacoes: Array<Congregacao> = [];
   
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
-  congregacoes: Congregacao[]
-
   constructor(
     private membroService: MembroService,
-    private congregacaoService: CongregacaoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore
   ) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get("id")
-    this.membroService.readById(id).subscribe((membro) => {
-      this.membro = membro;
-    })
-    this.congregacaoService.getCongregacoes().subscribe(congregacoes => {
-      //this.congregacoes = congregacoes;
-    })
+    const id = +this.route.snapshot.paramMap.get("id");
+
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    let codIgreja = this.usuario.igreja;
+
+    this.firestore.collection('membro', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', id)).get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+          this.membro = doc.data() as Membro;
+        });
+    });
+    
+    this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+            let aux = doc.id;
+            this.congregacao = doc.data() as Congregacao;
+            this.congregacoes.push(this.congregacao);
+        });
+    });
   }
 
   updateMembro(): void {
