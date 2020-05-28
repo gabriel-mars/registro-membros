@@ -25,7 +25,7 @@ export class CongregacaoService {
   create(congregacao: Congregacao): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     congregacao.igreja = this.usuario.igreja;
-    congregacao.id = parseInt(Math.random().toString(16).substr(2, 4));
+    congregacao.id = Math.floor(Math.random() * 101);
     this.firestore.collection('congregacao').add(congregacao);
     this.toastService.showMessage('Congregação cadastrada!', true);
   }

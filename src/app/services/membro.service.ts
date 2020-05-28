@@ -25,7 +25,7 @@ export class MembroService {
   create(membro: Membro): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
     membro.igreja = this.usuario.igreja;
-    membro.id = parseInt(Math.random().toString(16).substr(2, 4));
+    membro.id = Math.floor(Math.random() * 1001);
     this.firestore.collection('membro').doc(membro.cpf).set(membro);
     this.toastService.showMessage('Membro cadastrado!', true);
   }
