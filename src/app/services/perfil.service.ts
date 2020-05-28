@@ -34,7 +34,7 @@ export class PerfilService {
 
   update(usuario: Usuario): void {
     let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
-    let getDoc = userRef.get().toPromise()
+    userRef.get().toPromise()
     .then(doc => {
       if (!doc.exists) {
         this.toastService.showMessage('Usuário não encontrado!', false);

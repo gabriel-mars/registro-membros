@@ -15,8 +15,6 @@ export class LoginService {
     senha: ''
   }
 
-  baseUrl = "https://radiant-fortress-80374.herokuapp.com/usuarios";
-
   mostrarComponentesEmitter = new EventEmitter<boolean>();
   mostrarLoginEmitter = new EventEmitter<boolean>();
 
@@ -28,7 +26,7 @@ export class LoginService {
 
   readByEmail(usuario: Usuario): void {
     let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
-    let getDoc = userRef.get().toPromise()
+    userRef.get().toPromise()
     .then(doc => {
       if (!doc.exists) {
         this.toastService.showMessage('Usuário incorreto!', false);

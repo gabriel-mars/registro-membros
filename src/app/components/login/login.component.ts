@@ -19,12 +19,6 @@ export class LoginComponent implements OnInit {
     senha: ''
   }
 
-  aux: Usuario = {
-    nome: '',
-    email: '',
-    senha: ''
-  }
-
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
