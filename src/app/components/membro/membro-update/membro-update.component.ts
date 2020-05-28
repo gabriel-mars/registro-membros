@@ -54,10 +54,8 @@ export class MembroUpdateComponent implements OnInit {
   }
 
   updateMembro(): void {
-    this.membroService.update(this.membro).subscribe(() => {
-      //this.membroService.showMessage('Membro atualizado!', true)
-      this.router.navigate(['/membros']);
-    })
+    this.membroService.update(this.membro);
+    this.router.navigate(['/membros']);
   }
 
   cancel(): void {
