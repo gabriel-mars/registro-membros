@@ -40,14 +40,19 @@ export class PerfilService {
         this.toastService.showMessage('Usuário não encontrado!', false);
       } else {
         this.aux = doc.data() as Usuario;
-        
-        usuario.senha = this.aux.senha;
-        this.aux = usuario;
-        this.firestore.doc(`usuario/${usuario.email}`).set(this.aux);
-        this.aux.senha = '';
 
-        localStorage.setItem('usuario', JSON.stringify(this.aux));
-        this.toastService.showMessage('Perfil atualizado!', true);
+        if(usuario.senha === this.aux.senha) {
+          this.aux = usuario;
+          this.firestore.doc(`usuario/${usuario.email}`).set(this.aux);
+          this.aux.senha = '';
+          localStorage.setItem('usuario', JSON.stringify(this.aux));
+          this.toastService.showMessage('Perfil atualizado!', true);
+        } else {
+          this.firestore.doc(`usuario/${usuario.email}`).set(usuario);
+          usuario.senha = '';
+          localStorage.setItem('usuario', JSON.stringify(usuario));
+          this.toastService.showMessage('Senha atualizada!', true);
+        }
       }
     })
     .catch(err => {

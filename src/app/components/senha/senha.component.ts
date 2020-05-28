@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastService } from './../../services/toast.service';
 import { HeaderService } from './../template/header/header.service';
 import { Usuario } from '../../models/usuario.model';
@@ -18,13 +19,16 @@ export class SenhaComponent implements OnInit {
     email: '',
     senha: ''
   };
+  pass: String;
+
   hide = true;
 
   constructor(
     private perfilService: PerfilService,
     private headerService: HeaderService,
     private router: Router,
-    private toastService: ToastService) {
+    private toastService: ToastService,
+    private firestore: AngularFirestore) {
       headerService.headerData = {
         title: 'Senha',
         icon: 'vpn_key',
@@ -34,8 +38,14 @@ export class SenhaComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    this.perfilService.readById(this.usuario.id).subscribe((usuario) => {
-      this.usuario = usuario;
+
+    let codIgreja = this.usuario.igreja;
+
+    this.firestore.collection('usuario', ref => ref.where('igreja', '==', `${codIgreja}`).where('email', '==', this.usuario.email)).get().toPromise()
+    .then(snap => {
+        snap.forEach(doc => {
+          this.usuario = doc.data() as Usuario;
+        });
     });
   }
 
@@ -44,11 +54,9 @@ export class SenhaComponent implements OnInit {
       if (this.aux.senha === this.aux.email) {
         if (this.aux.nome === this.usuario.senha) {
           this.usuario.senha = this.aux.senha;
-          //this.perfilService.update(this.usuario).subscribe(() => {
-            //this.toastService.showMessage("Senha atualizada!", true);
-            //this.router.navigate(['/perfil']);
-          //});
-        } {
+          this.perfilService.update(this.usuario);
+          this.router.navigate(['/perfil']);
+        } else {
           this.toastService.showMessage("Informe sua senha atual!", false);
         }
       } else {
