@@ -5,4 +5,5 @@ export interface Usuario {
     senha: string
     telefone?: string
     igreja?: string
+    codIgreja?: string
 }

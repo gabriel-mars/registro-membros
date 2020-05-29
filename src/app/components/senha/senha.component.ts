@@ -2,7 +2,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastService } from './../../services/toast.service';
 import { HeaderService } from './../template/header/header.service';
 import { Usuario } from '../../models/usuario.model';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { PerfilService } from '../../services/perfil.service';
 import { Component, OnInit } from '@angular/core';
 

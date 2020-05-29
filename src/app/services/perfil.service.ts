@@ -1,10 +1,7 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastService } from './toast.service';
 import { Usuario } from '../models/usuario.model';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +14,9 @@ export class PerfilService {
     senha: ''
   }
 
-  baseUrl = "https://radiant-fortress-80374.herokuapp.com/usuarios";
-
   constructor(
-    private http: HttpClient,
     private toastService: ToastService,
     private firestore: AngularFirestore) { }
-
-  readById(id: number): Observable<Usuario> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Usuario>(url).pipe(
-      map((obj) => obj),
-      catchError(e => this.toastService.errorHandler(e))
-    );
-  }
 
   update(usuario: Usuario): void {
     let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);

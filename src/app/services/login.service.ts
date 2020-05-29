@@ -23,7 +23,6 @@ export class LoginService {
     private firestore: AngularFirestore,
     private toastService: ToastService) { }
 
-
   readByEmail(usuario: Usuario): void {
     let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
     userRef.get().toPromise()

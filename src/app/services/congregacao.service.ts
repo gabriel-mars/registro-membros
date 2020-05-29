@@ -18,7 +18,7 @@ export class CongregacaoService {
 
   create(congregacao: Congregacao): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    congregacao.igreja = this.usuario.igreja;
+    congregacao.igreja = this.usuario.codIgreja;
     congregacao.id = Math.floor(Math.random() * 101);
     this.firestore.collection('congregacao').add(congregacao);
     this.toastService.showMessage('Congregação cadastrada!', true);
@@ -26,13 +26,13 @@ export class CongregacaoService {
 
   getCongregacoes() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.igreja;
+    let codIgreja = this.usuario.codIgreja;
     return this.firestore.collection('congregacao', ref => ref.where('igreja', '==', codIgreja)).valueChanges();
   }
 
   update(congregacao: Congregacao): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.igreja;
+    let codIgreja = this.usuario.codIgreja;
     
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', congregacao.id)).get().toPromise()
     .then(snap => {

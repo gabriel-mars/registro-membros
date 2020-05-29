@@ -1,6 +1,5 @@
 import { Usuario } from './../../../models/usuario.model';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CongregacaoService } from '../../../services/congregacao.service';
 import { Membro } from '../../../models/membro.model';
 import { MembroService } from '../../../services/membro.service';
 import { Component, OnInit } from '@angular/core';
@@ -40,11 +39,10 @@ export class MembroCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.igreja;
-    let congrRef = this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
+    let codIgreja = this.usuario.codIgreja;
+    this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
-            let aux = doc.id;
             this.congregacao = doc.data() as Congregacao;
             this.congregacoes.push(this.congregacao);
         });

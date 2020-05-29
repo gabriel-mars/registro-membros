@@ -12,7 +12,6 @@ import { Congregacao } from '../../../models/congregacao.model';
 })
 export class CongregacaoDeleteComponent implements OnInit {
   usuario: Usuario;
-  
   congregacao: Congregacao;
   aux: Congregacao;
 

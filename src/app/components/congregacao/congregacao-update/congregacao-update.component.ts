@@ -25,7 +25,7 @@ export class CongregacaoUpdateComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get("id");
 
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.igreja;
+    let codIgreja = this.usuario.codIgreja;
 
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', id)).get().toPromise()
     .then(snap => {
