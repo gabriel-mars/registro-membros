@@ -1,45 +1,45 @@
 <mat-card>
-    <mat-card-title>Editar Congregação</mat-card-title>
-
-    <form>
-        <p>
-            <mat-form-field class="example-full-width" *ngIf="congregacao?.nome">
-                <input matInput placeholder="Nome" [(ngModel)] = "congregacao.nome" name="nome"/>
-            </mat-form-field>
-        </p>
-        <table class="example-full-width" cellspacing="0">
-            <tr>
-                <td>
-                    <mat-form-field class="example-full-width" *ngIf="congregacao?.dirigente">
-                        <input matInput placeholder="Dirigente" [(ngModel)] = "congregacao.dirigente" name="dirigente"/>
-                    </mat-form-field>
-                </td>
-                <td>
-                    <mat-form-field class="example-full-width" *ngIf="congregacao?.logradouro">
-                        <input matInput placeholder="Endereço" [(ngModel)] = "congregacao.logradouro" name="logradouro"/>
-                    </mat-form-field>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <mat-form-field class="example-full-width" *ngIf="congregacao?.bairro">
-                        <input matInput placeholder="Bairro" [(ngModel)] = "congregacao.bairro" name="bairro"/>
-                    </mat-form-field>
-                </td>
-                <td>
-                    <mat-form-field class="example-full-width" *ngIf="congregacao?.cidade">
-                        <input matInput placeholder="Cidade" [(ngModel)] = "congregacao.cidade" name="cidade"/>
-                    </mat-form-field>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <mat-card-header>
+        <mat-card-title>Editar Congregação</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-card-content>
+        <form>
+            <p>
+                <mat-form-field class="example-full-width" *ngIf="congregacao?.nome">
+                    <input matInput placeholder="Nome" [(ngModel)] = "congregacao.nome" name="nome"/>
+                </mat-form-field>
+            </p>
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" *ngIf="congregacao?.dirigente">
+                            <input matInput placeholder="Dirigente" [(ngModel)] = "congregacao.dirigente" name="dirigente"/>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width" *ngIf="congregacao?.logradouro">
+                            <input matInput placeholder="Endereço" [(ngModel)] = "congregacao.logradouro" name="logradouro"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" *ngIf="congregacao?.bairro">
+                            <input matInput placeholder="Bairro" [(ngModel)] = "congregacao.bairro" name="bairro"/>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width" *ngIf="congregacao?.cidade">
+                            <input matInput placeholder="Cidade" [(ngModel)] = "congregacao.cidade" name="cidade"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="updateCongregacao()" color="primary">Salvar</button>
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+    </mat-card-actions>
 </mat-card>
-
-<button mat-raised-button (click)="updateCongregacao()" color="primary">
-    Salvar
-</button>
-
-<button mat-raised-button (click)="cancel()">
-    Cancelar
-</button>
