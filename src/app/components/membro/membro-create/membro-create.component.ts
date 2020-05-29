@@ -20,7 +20,8 @@ export class MembroCreateComponent implements OnInit {
     congregacao: '',
     telefone: '',
     email: '',
-    endereco: ''
+    endereco: '',
+    observacao: ''
   }
 
   emailFormControl = new FormControl('', [

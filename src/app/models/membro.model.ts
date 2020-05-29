@@ -7,4 +7,5 @@ export interface Membro {
     email: string
     endereco: string
     igreja?: string
+    observacao?: string
 }
