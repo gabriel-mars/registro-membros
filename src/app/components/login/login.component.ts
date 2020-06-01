@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    localStorage.clear();
     this.loginService.readByEmail(this.usuario);
   }
 }
