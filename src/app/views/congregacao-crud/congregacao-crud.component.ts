@@ -9,12 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CongregacaoCrudComponent implements OnInit {
 
-  constructor(private router: Router, private headerService: HeaderService) { 
+  constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Cadastro de Congregações',
       icon: 'location_city',
       routeUrl: '/congregacoes'
-    }
+    };
   }
 
   ngOnInit(): void {

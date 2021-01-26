@@ -18,7 +18,7 @@ export class MembroUpdateComponent implements OnInit {
   usuario: Usuario;
   congregacao: Congregacao;
   congregacoes: Array<Congregacao> = [];
-  
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -32,10 +32,10 @@ export class MembroUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+    const id = +this.route.snapshot.paramMap.get('id');
 
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.codIgreja;
+    const codIgreja = this.usuario.codIgreja;
 
     this.firestore.collection('membro', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', id)).get().toPromise()
     .then(snap => {
@@ -43,7 +43,7 @@ export class MembroUpdateComponent implements OnInit {
           this.membro = doc.data() as Membro;
         });
     });
-    
+
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
@@ -59,6 +59,6 @@ export class MembroUpdateComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/membros'])
+    this.router.navigate(['/membros']);
   }
 }

@@ -9,15 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private headerService: HeaderService, private loginService: LoginService) { 
+  constructor(private headerService: HeaderService, private loginService: LoginService) {
     headerService.headerData = {
       title: 'Início',
       icon: 'home',
       routeUrl: ''
-    }
+    };
   }
 
   ngOnInit(): void {
-    
+
   }
 }

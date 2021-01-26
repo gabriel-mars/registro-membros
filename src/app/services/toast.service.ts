@@ -12,9 +12,9 @@ export class ToastService {
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 300,
-      horizontalPosition: "right",
-      verticalPosition: "top",
-      panelClass: isError ? ["msg-success"] : ["msg-error"]
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: isError ? ['msg-success'] : ['msg-error']
     });
   }
 

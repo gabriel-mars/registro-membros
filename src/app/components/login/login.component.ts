@@ -10,20 +10,20 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  mostrarLogin: boolean = true;
+  mostrarLogin = true;
   hide = true;
 
   usuario: Usuario = {
     nome: '',
     email: '',
     senha: ''
-  }
+  };
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-  
+
   constructor( private loginService: LoginService ) { }
 
   ngOnInit(): void {

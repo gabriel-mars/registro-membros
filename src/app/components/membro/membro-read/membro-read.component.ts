@@ -15,18 +15,18 @@ export class MembroReadComponent implements OnInit {
   constructor(private membroService: MembroService) {}
 
   ngOnInit(): void {
-    
+
   }
 }
 
 export class MembroDataSource extends DataSource<any> {
   constructor(private membroService: MembroService) {
-    super()
+    super();
   }
- 
+
   connect() {
     return this.membroService.getMembros();
   }
- 
+
   disconnect() {}
 }

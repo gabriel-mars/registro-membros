@@ -28,7 +28,7 @@ export class PerfilComponent implements OnInit {
         title: 'Perfil',
         icon: 'person',
         routeUrl: '/perfil'
-      }
+      };
     }
 
   ngOnInit(): void {

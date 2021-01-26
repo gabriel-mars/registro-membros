@@ -22,10 +22,10 @@ export class CongregacaoUpdateComponent implements OnInit {
     private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get("id");
+    const id = +this.route.snapshot.paramMap.get('id');
 
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.codIgreja;
+    const codIgreja = this.usuario.codIgreja;
 
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', id)).get().toPromise()
     .then(snap => {

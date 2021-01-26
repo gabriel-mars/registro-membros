@@ -12,8 +12,8 @@ export class AppComponent {
 
   usuario: Usuario;
 
-  mostrarComponente: boolean = false;
-  mostrarLogin: boolean = true;
+  mostrarComponente = false;
+  mostrarLogin = true;
 
   constructor(private loginService: LoginService){}
 
@@ -28,7 +28,7 @@ export class AppComponent {
       this.loginService.mostrarComponentesEmitter.subscribe(
         show => this.mostrarComponente = show
       );
-  
+
       this.loginService.mostrarLoginEmitter.subscribe(
         show => this.mostrarLogin = show
       );

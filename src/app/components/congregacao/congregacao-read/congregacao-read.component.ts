@@ -20,12 +20,12 @@ export class CongregacaoReadComponent implements OnInit {
 
 export class CongregacaoDataSource extends DataSource<any> {
   constructor(private congregacaoService: CongregacaoService) {
-    super()
+    super();
   }
- 
+
   connect() {
     return this.congregacaoService.getCongregacoes();
   }
- 
+
   disconnect() {}
 }

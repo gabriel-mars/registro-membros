@@ -13,7 +13,7 @@ export class LoginService {
     nome: '',
     email: '',
     senha: ''
-  }
+  };
 
   mostrarComponentesEmitter = new EventEmitter<boolean>();
   mostrarLoginEmitter = new EventEmitter<boolean>();
@@ -24,14 +24,14 @@ export class LoginService {
     private toastService: ToastService) { }
 
   readByEmail(usuario: Usuario): void {
-    let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
+    const userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
     userRef.get().toPromise()
     .then(doc => {
       if (!doc.exists) {
         this.toastService.showMessage('Usuário incorreto!', false);
       } else {
         this.aux = doc.data() as Usuario;
-        
+
         if (this.aux.email === usuario.email && this.aux.senha === usuario.senha) {
           this.fazerLogin(this.aux);
         } else {
