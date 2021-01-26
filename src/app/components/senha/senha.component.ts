@@ -33,13 +33,13 @@ export class SenhaComponent implements OnInit {
         title: 'Senha',
         icon: 'vpn_key',
         routeUrl: '/perfil/senha'
-      }
+      };
     }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
 
-    let codIgreja = this.usuario.igreja;
+    const codIgreja = this.usuario.igreja;
 
     this.firestore.collection('usuario', ref => ref.where('igreja', '==', `${codIgreja}`).where('email', '==', this.usuario.email)).get().toPromise()
     .then(snap => {
@@ -57,13 +57,13 @@ export class SenhaComponent implements OnInit {
           this.perfilService.update(this.usuario);
           this.router.navigate(['/perfil']);
         } else {
-          this.toastService.showMessage("Informe sua senha atual!", false);
+          this.toastService.showMessage('Informe sua senha atual!', false);
         }
       } else {
-        this.toastService.showMessage("Nova senha e confirmação devem ser iguais!", false);
+        this.toastService.showMessage('Nova senha e confirmação devem ser iguais!', false);
       }
     } else {
-      this.toastService.showMessage("Preencha os dados corretamente!", false);
+      this.toastService.showMessage('Preencha os dados corretamente!', false);
     }
   }
 
