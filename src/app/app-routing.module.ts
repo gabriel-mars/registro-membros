@@ -15,51 +15,51 @@ import { CongregacaoCreateComponent } from './components/congregacao/congregacao
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: LoginComponent
   },
   {
-    path: "home",
+    path: 'home',
     component: HomeComponent
   },
   {
-    path: "membros",
+    path: 'membros',
     component: MembrosCrudComponent
   },
   {
-    path: "membros/create",
+    path: 'membros/create',
     component: MembroCreateComponent
   },
   {
-    path: "membros/update/:id",
+    path: 'membros/update/:id',
     component: MembroUpdateComponent
   },
   {
-    path: "membros/delete/:id",
+    path: 'membros/delete/:id',
     component: MembroDeleteComponent
   },
   {
-    path: "congregacoes",
+    path: 'congregacoes',
     component: CongregacaoCrudComponent
   },
   {
-    path: "congregacoes/create",
+    path: 'congregacoes/create',
     component: CongregacaoCreateComponent
   },
   {
-    path: "congregacoes/update/:id",
+    path: 'congregacoes/update/:id',
     component: CongregacaoUpdateComponent
   },
   {
-    path: "congregacoes/delete/:id",
+    path: 'congregacoes/delete/:id',
     component: CongregacaoDeleteComponent
   },
   {
-    path: "perfil",
+    path: 'perfil',
     component: PerfilComponent
   },
   {
-    path: "perfil/senha",
+    path: 'perfil/senha',
     component: SenhaComponent
   }
 ];
