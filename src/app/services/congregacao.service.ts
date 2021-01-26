@@ -2,7 +2,7 @@ import { ToastService } from './toast.service';
 import { Usuario } from '../models/usuario.model';
 import { Injectable } from '@angular/core';
 import { Congregacao } from '../models/congregacao.model';
-import { AngularFirestore } from '@angular/fire/firestore'
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -26,21 +26,21 @@ export class CongregacaoService {
 
   getCongregacoes() {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.codIgreja;
+    const codIgreja = this.usuario.codIgreja;
     return this.firestore.collection('congregacao', ref => ref.where('igreja', '==', codIgreja)).valueChanges();
   }
 
   update(congregacao: Congregacao): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.codIgreja;
-    
+    const codIgreja = this.usuario.codIgreja;
+
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`).where('id', '==', congregacao.id)).get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
           this.congregacao = doc.data() as Congregacao;
           this.firestore.doc(`congregacao/${doc.id}`).set(congregacao);
           this.toastService.showMessage('Congregação atualizada!', true);
-        })    
+        });
     })
     .catch(err => {
       this.toastService.showMessage('Ocorreu um erro!', false);
@@ -52,9 +52,9 @@ export class CongregacaoService {
     this.firestore.collection('congregacao').get().toPromise()
     .then(snap => {
         snap.forEach(doc => {
-            let aux = doc.id;
+            const aux = doc.id;
             this.congregacao = doc.data() as Congregacao;
-            
+
             if (this.congregacao.id == id){
               this.firestore.collection('congregacao').doc(`${aux}`).delete()
               .then(() => {
