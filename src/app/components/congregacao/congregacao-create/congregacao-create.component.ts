@@ -16,7 +16,7 @@ export class CongregacaoCreateComponent implements OnInit {
     bairro: '',
     cidade: '',
     dirigente: ''
-  }
+  };
 
   constructor(private congregacaoService: CongregacaoService, private router: Router) { }
 

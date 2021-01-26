@@ -15,8 +15,8 @@ export class MembroDeleteComponent implements OnInit {
   aux: Membro;
 
   constructor(
-    private membroService: MembroService, 
-    private router: Router, 
+    private membroService: MembroService,
+    private router: Router,
     private route: ActivatedRoute,
     private firestore: AngularFirestore) { }
 
@@ -26,7 +26,7 @@ export class MembroDeleteComponent implements OnInit {
     .then(snap => {
         snap.forEach(doc => {
             this.aux = doc.data() as Membro;
-            if (this.aux.id == id) this.membro = this.aux;
+            if (this.aux.id == id) { this.membro = this.aux; }
         });
     });
   }

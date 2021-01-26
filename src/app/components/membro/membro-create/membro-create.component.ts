@@ -22,7 +22,7 @@ export class MembroCreateComponent implements OnInit {
     email: '',
     endereco: '',
     observacao: ''
-  }
+  };
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -32,15 +32,15 @@ export class MembroCreateComponent implements OnInit {
   congregacoes: Array<Congregacao> = [];
   usuario: Usuario;
   congregacao: Congregacao;
-  
+
   constructor(
-    private membroService: MembroService, 
+    private membroService: MembroService,
     private router: Router,
     private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    let codIgreja = this.usuario.codIgreja;
+    const codIgreja = this.usuario.codIgreja;
     this.firestore.collection('congregacao', ref => ref.where('igreja', '==', `${codIgreja}`)).get().toPromise()
     .then(snap => {
         snap.forEach(doc => {

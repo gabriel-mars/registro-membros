@@ -12,29 +12,29 @@ export class PerfilService {
     nome: '',
     email: '',
     senha: ''
-  }
+  };
 
   constructor(
     private toastService: ToastService,
     private firestore: AngularFirestore) { }
 
   update(usuario: Usuario): void {
-    let userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
+    const userRef = this.firestore.collection('usuario').doc(`${usuario.email}`);
     userRef.get().toPromise()
     .then(doc => {
       if (!doc.exists) {
         this.toastService.showMessage('Usuário não encontrado!', false);
       } else {
         this.aux = doc.data() as Usuario;
-    
-        if(usuario.senha == "") {
+
+        if (usuario.senha == '') {
           usuario.senha = this.aux.senha;
           this.firestore.doc(`usuario/${usuario.email}`).set(usuario);
           usuario.senha = '';
           localStorage.setItem('usuario', JSON.stringify(usuario));
           this.toastService.showMessage('Perfil atualizado!', true);
         } else {
-          this.aux.senha = usuario.senha; 
+          this.aux.senha = usuario.senha;
           this.firestore.doc(`usuario/${usuario.email}`).set(this.aux);
           this.aux.senha = '';
           localStorage.setItem('usuario', JSON.stringify(this.aux));

@@ -14,7 +14,7 @@ export class MembrosCrudComponent implements OnInit {
       title: 'Cadastro de Membros',
       icon: 'group',
       routeUrl: '/membros'
-    }
+    };
   }
 
   ngOnInit(): void {

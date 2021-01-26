@@ -11,7 +11,7 @@ export class HeaderService {
     title: 'Início',
     icon: 'home',
     routeUrl: ''
-  })
+  });
 
   constructor() { }
 
@@ -20,6 +20,6 @@ export class HeaderService {
   }
 
   set headerData(headerData: HeaderData) {
-    this._headerData.next(headerData)
+    this._headerData.next(headerData);
   }
 }

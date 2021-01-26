@@ -16,8 +16,8 @@ export class CongregacaoDeleteComponent implements OnInit {
   aux: Congregacao;
 
   constructor(
-    private congregacaoService: CongregacaoService, 
-    private router: Router, 
+    private congregacaoService: CongregacaoService,
+    private router: Router,
     private route: ActivatedRoute,
     private firestore: AngularFirestore) { }
 
@@ -27,7 +27,7 @@ export class CongregacaoDeleteComponent implements OnInit {
     .then(snap => {
         snap.forEach(doc => {
             this.aux = doc.data() as Congregacao;
-            if (this.aux.id == id) this.congregacao = this.aux;
+            if (this.aux.id == id) { this.congregacao = this.aux; }
         });
     });
   }
